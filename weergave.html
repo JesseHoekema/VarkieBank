@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Conection | storten</title>
+  <link rel="shortcut icon" href="Piggy_Tokens.webp" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #displayClicks {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #depositButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    body {
+        padding-top: 60px;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+    }
+
+.sticky-header {
+  display: flex;
+  background-color: #333;
+  padding: 10px 0;
+  color: #fff;
+  padding-left: 25px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.flex {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.flex {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+nav {
+    padding-top: 15px;
+    padding-left: 10px;
+}
+#items {
+    font-size: 19px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.55s ease-in-out;
+}
+#items:hover {
+    color: red;
+}
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}
+.button {
+  border:  1px solid pink;
+  border-radius: 10px;
+  background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+  transition: transform 0.25s ease-in-out;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+h6 {
+    font-size: 0px;
+}
+  </style>
+</head>
+<body>
+    <div style="padding-bottom: 60px;">
+        <header class="sticky-header">
+            <a class="flex" href="VarkieBank.html">
+                <img src="Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <h1 class="title" style="color: white;">VarkieBank</h1>
+            </a>
+            <nav>
+              <ul>
+                <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
+                <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
+                <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
+                <a id="items" href="cookie_clicker.html">Verdienen</a>
+            </ul>
+            </nav>
+          </header>
+        
+    </div>
+    <div style="padding-left: 35%;">
+        <div class="box">
+            <h2>Varkies Storten Naar Saldo</h2>
+            <div id="displayClicks">Stort: <span id="clicks">0</span> Varkies Naar Je Saldo?</div>
+            &nbsp;<br>
+            <button id="depositButton" onclick="saveMoney()" class="button">Storten</button><br>
+            <a href="VarkieBank.html" class="debiel" style="color: black; font-size: 10px; padding-top: 5px;">Laat Maar</a>
+        </div>
+    </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const displayClicks = document.getElementById('clicks');
+        const storedClicks = sessionStorage.getItem('clickCount') || 0;
+    
+        if (storedClicks !== null) {
+            displayClicks.textContent = storedClicks;
+        } else {
+            displayClicks.textContent = '0';
+        }
+    });
+    
+    function saveMoney() {
+        const displayClicks = document.getElementById('clicks').textContent;
+        const storedMoney = localStorage.getItem('moneyAmount') || 0;
+        const totalMoney = parseInt(storedMoney) + parseInt(displayClicks);
+    
+        // Voeg transactie toe aan de transactiegeschiedenis
+        const transaction = `+ €${displayClicks} gestort (${new Date().toLocaleString()})`;
+        const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        storedTransactions.push(transaction);
+        localStorage.setItem('transactions', JSON.stringify(storedTransactions));
+    
+        localStorage.setItem('moneyAmount', totalMoney);
+        alert('Geldbedrag opgeslagen!');
+        window.location.href = 'VarkieBank.html';
+    }
+    </script>
+</body>
+</html>

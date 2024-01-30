@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winkel</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 150px;
+      background-color: #6A5ACD;
+    }
+
+    .item {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: inline-block;
+      background-color: pink;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .sticky-header {
+        background-color: #333;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    footer {
+        color: white;
+    }
+    .end {
+        width: 100%;
+        border: 1px solid white;
+        margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <h1>PigShop</h1>
+        <h2>Welkom in de winkel!</h2>
+    </header>
+
+  <div class="item">
+    <h3>PigBook</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 500</h3>
+    <button onclick="buyItem(500)">Koop</button>
+  </div>
+
+  <div class="item">
+    <h3>PigPhone</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 250</h3>
+    <button onclick="buyItem(250)">Koop</button>
+  </div>
+
+  <div class="item">
+    <h3>PigPad</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 300</h3>
+    <button onclick="buyItem(300)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>PigPod</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 200</h3>
+    <button onclick="buyItem(200)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>PigPad</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 25</h3>
+    <button onclick="buyItem(25)">Koop</button>
+  </div><br>
+  <div class="item">
+    <h3>Boek Over Koeien</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
+    <button onclick="buyItem(10)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Boek Over Varkens</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 15</h3>
+    <button onclick="buyItem(15)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Boek Over Geld</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 5</h3>
+    <button onclick="buyItem(5)">Koop</button>
+  </div><br>
+  <div class="item">
+    <h3>Speelgoed Auto</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 2</h3>
+    <button onclick="buyItem(2)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Witte Stoel</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 30</h3>
+    <button onclick="buyItem(30)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Zwarte Stoel</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 30</h3>
+    <button onclick="buyItem(30)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Gouden Stoel</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 5000</h3>
+    <button onclick="buyItem(5000)">Koop</button>
+  </div><br>
+  <div class="item">
+    <h3>Speelgoed Koe</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
+    <button onclick="buyItem(10)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Speelgoed Varken</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
+    <button onclick="buyItem(10)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>PoppenHuis</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 50</h3>
+    <button onclick="buyItem(50)">Koop</button>
+  </div><br>
+  <div class="item">
+    <h3>Tesla Model 3</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 42990</h3>
+    <button onclick="buyItem(42990)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Tesla Model X</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 101990</h3>
+    <button onclick="buyItem(101990)">Koop</button>
+  </div>
+  <div class="item">
+    <h3>Tesla Model Y</h3>
+    <h3><img src="Piggy_Tokens.webp" width="20px"> 42990</h3>
+    <button onclick="buyItem(42990)">Koop</button>
+  </div><br>
+  <div class="end"></div>
+  <footer>
+    Alles Wat Je Koopt Komt Niet Echt Aan!<br>
+    Het Is Maar Voor De Grap 😀!<br>
+    Meer Artikelen BinnenKort Met Afbeeldingen
+  </footer>
+  <script>
+    function buyItem(price) {
+      sessionStorage.setItem('selectedItemPrice', price);
+      window.location.href = 'aankoop.html';
+    }
+  </script>
+</body>
+</html>

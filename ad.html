@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geld Storten</title>
+  <link rel="shortcut icon" href="Piggy_Tokens.webp" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+      padding-top: 60px;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+.sticky-header {
+  display: flex;
+  background-color: #333;
+  padding: 10px 0;
+  color: #fff;
+  padding-left: 25px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.flex {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+nav {
+    padding-top: 15px;
+    padding-left: 10px;
+}
+#items {
+    font-size: 19px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.55s ease-in-out;
+}
+#items:hover {
+    color: red;
+}
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}
+.button {
+  border:  1px solid pink;
+  border-radius: 10px;
+  background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+  transition: transform 0.25s ease-in-out;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+#coinInput {
+  border-radius: 10px;
+  border: 1px solid pink;
+}
+  </style>
+</head>
+<body>
+    <div style="padding-bottom: 60px;">
+        <header class="sticky-header">
+            <a class="flex" href="VarkieBank.html">
+                <img src="Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <h1 class="title" style="color: white;">VarkieBank</h1>
+            </a>
+            <nav>
+              <ul>
+                <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
+                <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
+                <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
+                <a id="items" href="cookie_clicker.html">Verdienen</a>
+            </ul>
+            </nav>
+          </header>
+        
+    </div>
+    <div style="padding-left: 40%;">
+      <div class="box">
+        <h2>Geld Storten</h2>
+        <label for="coinInput">Geldbedrag:</label>
+        <input type="number" id="coinInput" min="0" placeholder="Voer Geldbedrag In">
+        <button class="button" onclick="addMoney()">Opslaan</button>
+      </div>
+    </div>
+
+    <script>
+      function addMoney() {
+        const moneyInput = document.getElementById('coinInput');
+        const moneyAmount = parseFloat(moneyInput.value) || 0; // Get the input value, default to 0 if not a valid number
+        const storedMoney = parseFloat(localStorage.getItem('moneyAmount')) || 0; // Get the stored value, default to 0 if not set
+        const newMoneyAmount = storedMoney + moneyAmount;
+
+        const transaction = `+ €${moneyAmount.toFixed(2)} (${new Date().toLocaleString()})`;
+      const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
+      storedTransactions.push(transaction);
+      localStorage.setItem('transactions', JSON.stringify(storedTransactions));
+  
+        localStorage.setItem('moneyAmount', newMoneyAmount);
+        alert(`Geldbedrag toegevoegd! Totaal: ${newMoneyAmount}`);
+        window.location.href="VarkieBank.html"
+      }
+    </script>
+</body>
+</html>
