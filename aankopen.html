@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gekochte Items</title>
+  <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background: linear-gradient(to left, #e04d89 50%, #c12a76 100%);
+    }
+
+    .item {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: inline-block;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .item h3 {
+      margin-bottom: 10px;
+    }
+    .sticky-header {
+        background-color: #333;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        left: 0;
+    }
+    #paidItemsContainer {
+        margin-top: 65px;
+    }
+  </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <h1>PigShop Aankopen</h1>
+        <h2>Bekijk de producten die je hebt gekocht in de winkel hier</h2>
+    </header>
+  
+  <div id="paidItemsContainer">
+
+  </div>
+
+  <script>
+    // Functie om gekochte items op te halen en te tonen
+    function displayPaidItems() {
+      let paidProducts = JSON.parse(localStorage.getItem('paidproducts')) || [];
+
+      let container = document.getElementById('paidItemsContainer');
+
+      // Loop door alle gekochte items en voeg ze toe aan de pagina
+      paidProducts.forEach(function(item) {
+        let div = document.createElement('div');
+        div.classList.add('item');
+        
+        let itemName = document.createElement('h3');
+        itemName.textContent = item.name;
+
+        div.appendChild(itemName);
+        container.appendChild(div);
+      });
+    }
+
+    // Roep de functie aan om gekochte items te tonen wanneer de pagina geladen is
+    displayPaidItems();
+  </script>
+</body>
+</html>

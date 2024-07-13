@@ -5,13 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>VarkieBank Online</title>
-  <link rel="shortcut icon" href="Piggy_Tokens.webp" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
   <style>
     body {
         margin: 0;
         font-family: 'Arial', sans-serif;
         color: white;
         background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     }
 
 .sticky-header {
@@ -88,7 +94,7 @@ nav {
     padding-top: 10px;
     background-color: white;
     width: 400px;
-    height: 200px;
+    height: 270px;
 }
 button {
     display: flex;
@@ -128,21 +134,29 @@ button:active {
   padding: 10px;
   margin-left: 10px;
 }
+#displayMoney {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
   </style>
 </head>
 <body>
     <div style="padding-bottom: 60px;">
         <header class="sticky-header">
             <a class="flex" href="VarkieBank.html">
-                <img src="Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
                 <h1 class="title" style="color: white;">VarkieBank</h1>
             </a>
             <nav>
                 <ul>
                     <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
-                    <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
                     <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
-                    <a id="items" href="cookie_clicker.html">Verdienen</a>
+                    <a id="items" href="cookie_clicker.html">Verdienen</a> <a>•</a>
+                    <a id="items" href="werken.html">Werken</a>
                 </ul>
             </nav>
           </header>
@@ -155,7 +169,7 @@ button:active {
             <h1>Je Saldo:</h1>
         </div>
         <div class="money">
-            <img src="Piggy_Tokens.webp" width="80px" height="80px" style="padding-right: 10px;">
+            <img src="assets/Piggy_Tokens.webp" width="80px" height="80px" style="padding-right: 10px;" draggable="false">
             <input style="padding-left: 10px;" id="displayMoney" readonly>
         </div>
       </div>
@@ -163,14 +177,17 @@ button:active {
         <div class="nieuwe">
             <div style="padding-left: 10px;">
                 <div>
-                    <button onclick="verdien()"><div class="icon1"><img class="img1" src="verdienen.png" width="50px"></div><div class="div">Geld Verdienen</div></button>
+                    <button onclick="verdien()"><div class="icon1"><img class="img1" src="/assets/verdienen.png" width="50px"></div><div class="div">Geld Verdienen</div></button>
                 </div>
                 <div style="padding-top: 5px;">
-                    <button onclick="stort()"><div class="icon1"><img src="i.png" width="50px"></div><div class="div">Geld Storten</div></button>
+                  <button onclick="winkel()"><div class="icon1"><img src="assets/buy-it.png" width="42px"></div><div class="div">Winkelen</div></button>
                 </div>
                 <div style="padding-top: 5px;">
-                  <button onclick="winkel()"><div class="icon1"><img src="buy-it.png" width="42px"></div><div class="div">Winkelen</div></button>
-              </div>
+                  <button onclick="aankopen()"><div class="icon1"><img src="assets/products.png" width="42px"></div><div class="div">Aankopen</div></button>
+                </div>
+                <div style="padding-top: 5px;">
+                  <button onclick="werken()"><div class="icon1"><img src="assets/work.png" width="50px"></div><div class="div">Werken</div></button>
+                </div>
             </div>
         </div>
     </div>
@@ -217,6 +234,12 @@ button:active {
     }
     function winkel() {
       window.location.href="winkel.html"
+    }
+    function aankopen() {
+      window.location.href="aankopen.html"
+    }
+    function werken() {
+      window.location.href="werken.html"
     }
   </script>
   <script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiggyJobs</title>
+    <link rel="shortcut icon" href="assets/work.png" type="image/x-icon">
+    <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 150px;
+      background: linear-gradient(to left, #e04d89 50%, #c12a76 100%);
+    }
+
+    .item {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: inline-block;
+      background-color: pink;
+      transition: transform 0.3s ease-in-out;
+    }
+    .item:hover {
+        transform: scale(1.05);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .sticky-header {
+        background-color: #333;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        left: 0;
+    }
+    footer {
+        color: white;
+    }
+    .end {
+        width: 100%;
+        border: 1px solid white;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <h1>PiggyJobs</h1>
+    </header>
+    <a href="sorteren.html" style="color: black;">
+        <div class="item">
+            <img src="assets/paket1.png" width="100px">
+            <h3>Pakketjes sorteren</h3>
+        </div>
+    </a>
+    <a href="bezorgen.html" style="color: black;">
+        <div class="item">
+            <img src="assets/brief.png" width="100px">
+            <h3>Pakketjes bezorgen</h3>
+        </div>
+    </a>
+</body>
+</html>

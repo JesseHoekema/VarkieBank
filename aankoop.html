@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aankoop</title>
+  <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -99,7 +100,7 @@ h6 {
     <div style="padding-bottom: 60px;">
         <header class="sticky-header">
             <a class="flex" href="VarkieBank.html">
-                <img src="Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
                 <h1 class="title" style="color: white;">VarkieBank</h1>
             </a>
             <nav>
@@ -116,7 +117,7 @@ h6 {
     <div style="padding-left: 35%;">
     <div class="box">
         <h2>Afrekenen VarkieBank</h2>
-        <p>Je hebt gekozen voor een artikel van <img src="Piggy_Tokens.webp" width="20px"><span id="itemPrice"></span>.</p>
+        <p>Je hebt gekozen voor een artikel van <img src="assets/Piggy_Tokens.webp" width="20px"><span id="itemPrice"></span>.</p>
       
         <label for="confirmButton">Betalen?</label><br>
         <button class="button" onclick="confirmPurchase()">Betaal</button>
@@ -145,8 +146,17 @@ h6 {
         alert('Je hebt niet genoeg geld om dit artikel te kopen!');
       } else {
         const newMoneyAmount = storedMoney - selectedItemPrice;
+        let itemName = sessionStorage.getItem('selectedItemName');
         localStorage.setItem('moneyAmount', newMoneyAmount);
-
+        let paidProducts = JSON.parse(localStorage.getItem('paidproducts')) || [];
+        paidProducts.push({ name: itemName });
+        localStorage.setItem('paidproducts', JSON.stringify(paidProducts));
+        if (itemName && itemName === "Floppa Coin") {
+          localStorage.setItem('floppaCoin', 'True');
+        }
+        
+        // Optioneel: Verwijder het item uit sessionStorage
+        sessionStorage.removeItem('selectedItemName');
         // Update transaction history
         const transaction = `- €${selectedItemPrice.toFixed(2)} gekocht (${new Date().toLocaleString()})`;
         const transactionHistory = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -154,6 +164,7 @@ h6 {
         localStorage.setItem('transactions', JSON.stringify(transactionHistory));
 
         alert('Aankoop voltooid! Bedankt voor je aankoop.');
+        sessionStorage.removeItem("selectedItemPrice");
         window.location.href = 'VarkieBank.html';
       }
     }

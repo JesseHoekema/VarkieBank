@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Winkel</title>
+  <title>PigShop</title>
+  <link rel="shortcut icon" href="assets/buy-it.png" type="image/x-icon">
   <style>
     body {
       font-family: 'Arial', sans-serif;
       text-align: center;
       padding-top: 150px;
-      background-color: #6A5ACD;
+      background: linear-gradient(to left, #e04d89 50%, #c12a76 100%);
     }
 
     .item {
@@ -33,6 +34,7 @@
         width: 100%;
         top: 0;
         z-index: 1000;
+        left: 0;
     }
     footer {
         color: white;
@@ -46,111 +48,146 @@
 </head>
 <body>
     <header class="sticky-header">
-        <h1>PigShop</h1>
-        <h2>Welkom in de winkel!</h2>
+        <h1>PigShop <span><img src="assets/buy-it.png" width="35px" draggable="false"></span></h1>
+        <a href="aankopen.html"><button style="height: 25px; padding: 0; padding-left: 5px; padding-right: 5px; border-radius: 2px; border: none; background-color: red; color: white; margin-bottom: 5px;">Naar Mijn Aankopen</button></a>
     </header>
 
   <div class="item">
+    <img src="assets/products/apple/pigbook.png" width="150px" draggable="false">
     <h3>PigBook</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 500</h3>
-    <button onclick="buyItem(500)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 500</h3>
+    <button onclick="buyItem('PigBook', 500)">Koop</button>
   </div>
 
   <div class="item">
+    <img src="assets/products/apple/pigphone.png" width="145px" draggable="false">
     <h3>PigPhone</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 250</h3>
-    <button onclick="buyItem(250)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 250</h3>
+    <button onclick="buyItem('PigPhone', 250)">Koop</button>
   </div>
 
   <div class="item">
+    <img src="assets/products/apple/pigpad.png" width="129px" draggable="false">
     <h3>PigPad</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 300</h3>
-    <button onclick="buyItem(300)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 300</h3>
+    <button onclick="buyItem('PigPad', 300)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/apple/pigpod.png" width="110px" draggable="false">
     <h3>PigPod</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 200</h3>
-    <button onclick="buyItem(200)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 200</h3>
+    <button onclick="buyItem('PigPod', 200)">Koop</button>
   </div>
+
   <div class="item">
-    <h3>PigPad</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 25</h3>
-    <button onclick="buyItem(25)">Koop</button>
-  </div><br>
-  <div class="item">
+    <img src="assets/products/boeken/boekoverkoeien.jpg" width="105px" draggable="false">
     <h3>Boek Over Koeien</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
-    <button onclick="buyItem(10)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 10</h3>
+    <button onclick="buyItem('Boek Over Koeien', 10)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/boeken/boekovervarkens.jpg" width="100px" draggable="false">
     <h3>Boek Over Varkens</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 15</h3>
-    <button onclick="buyItem(15)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 15</h3>
+    <button onclick="buyItem('Boek Over Varkens', 15)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/boeken/boekovergeld.jpg" width="105px" draggable="false">
     <h3>Boek Over Geld</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 5</h3>
-    <button onclick="buyItem(5)">Koop</button>
-  </div><br>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 5</h3>
+    <button onclick="buyItem('Boek Over Geld', 5)">Koop</button>
+  </div>
+
   <div class="item">
+    <img src="assets/products/speelgoed/speelgoedauto.png" width="200px" draggable="false">
     <h3>Speelgoed Auto</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 2</h3>
-    <button onclick="buyItem(2)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 2</h3>
+    <button onclick="buyItem('Speelgoed Auto', 2)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/stoelen/wittestoel.webp" width="150px" draggable="false">
     <h3>Witte Stoel</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 30</h3>
-    <button onclick="buyItem(30)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 30</h3>
+    <button onclick="buyItem('Witte Stoel', 30)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/stoelen/zwartestoel.png" width="150px" draggable="false">
     <h3>Zwarte Stoel</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 30</h3>
-    <button onclick="buyItem(30)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 30</h3>
+    <button onclick="buyItem('Zwarte Stoel', 30)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/stoelen/goudestoel.png" width="150px" draggable="false">
     <h3>Gouden Stoel</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 5000</h3>
-    <button onclick="buyItem(5000)">Koop</button>
-  </div><br>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 5000</h3>
+    <button onclick="buyItem('Gouden Stoel', 5000)">Koop</button>
+  </div>
+
   <div class="item">
+    <img src="assets/products/speelgoed/speelgoedkoe.png" width="100px" draggable="false">
     <h3>Speelgoed Koe</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
-    <button onclick="buyItem(10)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 10</h3>
+    <button onclick="buyItem('Speelgoed Koe', 10)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/speelgoed/speelgoedvarken.png" width="100px" draggable="false">
     <h3>Speelgoed Varken</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 10</h3>
-    <button onclick="buyItem(10)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 10</h3>
+    <button onclick="buyItem('Speelgoed Varken', 10)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/speelgoed/poppenhuis.png" width="200px" draggable="false">
     <h3>PoppenHuis</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 50</h3>
-    <button onclick="buyItem(50)">Koop</button>
-  </div><br>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 50</h3>
+    <button onclick="buyItem('PoppenHuis', 50)">Koop</button>
+  </div>
   <div class="item">
+    <img src="assets/floppacoin.png" width="200px" draggable="false">
+    <h3>Floppa Coin +5 coins per click</h3>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false">1000</h3>
+    <button onclick="buyItem('Floppa Coin', 1000)">Koop</button>
+  </div>
+  <br>
+  <div class="item">
+    <img src="assets/products/tesla/teslamodel3.png" width="200px" draggable="false">
     <h3>Tesla Model 3</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 42990</h3>
-    <button onclick="buyItem(42990)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 42990</h3>
+    <button onclick="buyItem('Tesla Model 3', 42990)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/tesla/teslamodelx.png" width="200px" draggable="false">
     <h3>Tesla Model X</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 101990</h3>
-    <button onclick="buyItem(101990)">Koop</button>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false"> 101990</h3>
+    <button onclick="buyItem('Tesla Model X', 101990)">Koop</button>
   </div>
+
   <div class="item">
+    <img src="assets/products/tesla/teslamodely.png" width="200px" draggable="false">
     <h3>Tesla Model Y</h3>
-    <h3><img src="Piggy_Tokens.webp" width="20px"> 42990</h3>
-    <button onclick="buyItem(42990)">Koop</button>
-  </div><br>
-  <div class="end"></div>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px"> 42990</h3>
+    <button onclick="buyItem('Tesla Model Y', 42990)" draggable="false">Koop</button>
+  </div>
+
   <footer>
-    Alles Wat Je Koopt Komt Niet Echt Aan!<br>
+    Alles Wat Je Koopt Komt Niet Echt Aan!
     Het Is Maar Voor De Grap 😀!<br>
-    Meer Artikelen BinnenKort Met Afbeeldingen
   </footer>
   <script>
-    function buyItem(price) {
+    function buyItem(name, price) {
+      // Get existing paid products from localStorage or initialize an empty array
+      sessionStorage.setItem('selectedItemName', name);
       sessionStorage.setItem('selectedItemPrice', price);
+      
+      // Redirect to purchase page
       window.location.href = 'aankoop.html';
     }
   </script>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Varkies Clicker</title>
-  <link rel="shortcut icon" href="pg.jpeg" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/pg.jpeg" type="image/x-icon">
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -35,14 +35,14 @@
       margin-bottom: 5px;
     }
     header {
-            background-color: #00FF00; /* Felgroen */
-            padding: 20px;
-            display: flex; /* Om de logo en tekst horizontaal te plaatsen */
-            align-items: center; /* Om de logo en tekst verticaal te centreren */
-            color: white; /* Tekstkleur wit voor contrast */
-            margin-top: 0; /* Geen bovenmarge */
-            transition: height 0.25s ease-in-out;
-        }
+      background-color: #00FF00; /* Felgroen */
+      padding: 20px;
+      display: flex; /* Om de logo en tekst horizontaal te plaatsen */
+      align-items: center; /* Om de logo en tekst verticaal te centreren */
+      color: white; /* Tekstkleur wit voor contrast */
+      margin-top: 0; /* Geen bovenmarge */
+      transition: height 0.25s ease-in-out;
+    }
         
         header p {
             transition: display 0.25s ease-in-out;
@@ -76,7 +76,7 @@
 </head>
 <body>
     <header id="mainHeader">
-        <img src="pg.jpeg" alt="PiggyGames Logo" id="logo">
+        <img src="assets/pg.jpeg" alt="PiggyGames Logo" id="logo">
         <div>
             <h1>Welcome to PiggyGames</h1>
             <p id="p">Discover a world of fun and excitement!</p>
@@ -84,23 +84,35 @@
         </div>
     </header>
     <div class="div">
-        <audio src="start.mp3" autoplay loop></audio>
+        <audio src="assets/sounds/start.mp3" autoplay loop></audio>
         <h2 style="padding-top: 5px;">Varkie Clicker</h2>
-        <img id="cookie" src="Piggy_Tokens.webp" alt="Cookie" onclick="incrementClicks()">
+        <img id="cookie" src="assets/Piggy_Tokens.webp" alt="Cookie" onclick="floppaSkin()">
         <div id="clickCount">Varkies: <span id="clicks">0</span></div>
         <button id="depositButton" onclick="saveClicks()" >Deposit</button>
     </div>
 
   <script>
-    let clickCount = 0;
-
-    function incrementClicks() {
-      clickCount++;
-      document.getElementById('clicks').textContent = clickCount;
-      var audio = new Audio('mixkit-arcade-game-jump-coin-216.wav');
-      audio.play();
+    function floppaSkin() {
+      if (localStorage.getItem('floppaCoin') === 'True') {
+        let clickAmount = 5;
+        const coin = document.getElementById("cookie")
+        coin.src = "assets/floppacoin.png"
+        coin.style.width = "400px"
+        clickCount += 5;
+        document.getElementById('clicks').textContent = clickCount;
+        var audio = new Audio('assets/sounds/mixkit-arcade-game-jump-coin-216.wav');
+        audio.play();
+      } else {
+        clickCount ++;
+        document.getElementById('clicks').textContent = clickCount;
+        var audio = new Audio('assets/sounds/mixkit-arcade-game-jump-coin-216.wav');
+        audio.play();
+      }
     }
-
+    let clickCount = 0;
+    let clickAmount = 1;
+    var audio = new Audio('assets/sounds/mixkit-arcade-game-jump-coin-216.wav');
+    audio.play();
     function saveClicks() {
       const valuePerClick = 1; // Aantal euro's per klik
       const storedMoney = localStorage.getItem('moneyAmount') || 0;
@@ -111,6 +123,7 @@
       alert('Aantal klikken opgeslagen!');
       window.location.href = 'weergave.html';
     }
+    floppaSkin()
   </script>
   <script>
     function toggleHeight() {

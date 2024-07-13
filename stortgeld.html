@@ -111,40 +111,47 @@ h6 {
     <div style="padding-left: 35%;">
         <div class="box">
             <h2>Varkies Storten Naar Saldo</h2>
-            <div id="displayClicks">Stort: <span id="clicks">0</span> Varkies Naar Je Saldo?</div>
+            <p>Stort <span id="scoreDisplay"></span> Varkies Naar Je Saldo?</p>
             &nbsp;<br>
-            <button id="depositButton" onclick="saveMoney()" class="button">Storten</button><br>
+            <button id="depositButton" onclick="depositPoints()" class="button">Storten</button><br>
             <a href="VarkieBank.html" class="debiel" style="color: black; font-size: 10px; padding-top: 5px;">Laat Maar</a>
         </div>
     </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const displayClicks = document.getElementById('clicks');
-        const storedClicks = sessionStorage.getItem('clickCount') || 0;
-    
-        if (storedClicks !== null) {
-            displayClicks.textContent = storedClicks;
-        } else {
-            displayClicks.textContent = '0';
-        }
-    });
-    
-    function saveMoney() {
-        const displayClicks = document.getElementById('clicks').textContent;
-        const storedMoney = localStorage.getItem('moneyAmount') || 0;
-        const totalMoney = parseInt(storedMoney) + parseInt(displayClicks);
-    
-        // Voeg transactie toe aan de transactiegeschiedenis
-        const transaction = `+ €${displayClicks} gestort (${new Date().toLocaleString()})`;
-        const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
-        storedTransactions.push(transaction);
-        localStorage.setItem('transactions', JSON.stringify(storedTransactions));
-    
-        localStorage.setItem('moneyAmount', totalMoney);
-        alert('Geldbedrag opgeslagen!');
+    function depositPoints() {
+      let score = sessionStorage.getItem('selectedItemPrice');
+      if (score) {
+        score = parseInt(score);
+
+        let moneyAmount = localStorage.getItem('moneyAmount') || 0;
+        moneyAmount = parseInt(moneyAmount);
+
+        moneyAmount += score;
+
+        localStorage.setItem('moneyAmount', moneyAmount);
+        sessionStorage.removeItem('selectedItemPrice');
+
+        // Update transaction history
+        const transaction = `+ €${score.toFixed(2)} gestort (${new Date().toLocaleString()})`;
+        const transactionHistory = JSON.parse(localStorage.getItem('transactions')) || [];
+        transactionHistory.push(transaction);
+        localStorage.setItem('transactions', JSON.stringify(transactionHistory));
+
+        alert('Storting voltooid! Bedankt voor het storten.');
         window.location.href = 'VarkieBank.html';
+      } else {
+        alert('Er zijn geen Varkies om te storten.');
+      }
     }
+
+    // Laad de opgeslagen score in
+    window.onload = function() {
+      let score = sessionStorage.getItem('selectedItemPrice');
+      if (score) {
+        document.getElementById('scoreDisplay').textContent = score;
+      }
+    };
     </script>
 </body>
 </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakketjes Bezorgen | PiggyJobs</title>
+  <link rel="shortcut icon" href="assets/work.png" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    #container {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      border: 2px dashed #aaa;
+      background-color: #fff;
+      overflow: hidden;
+    }
+    .package {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url("assets/red_package.png");
+      background-size: contain;
+      cursor: move;
+      z-index: 100;
+    }
+    .house {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-image: url("assets/house.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      border-radius: 5px;
+      z-index: 50;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #flexbox {
+        width: 100%;
+        height: 100%;
+    }
+    .sticky-header {
+        background-color: #333;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        left: 0;
+    }
+  </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <h1>PiggyJobs</h1>
+    </header>
+    <div id="info">
+        <div class="score" id="score">Score: 0</div>
+        <div class="btn" id="scoreBtn">Stort Punten</div>
+    </div>
+    <div id="container">
+            <div class="house" id="house"></div>
+            <div class="package" id="package" draggable="true"></div>
+    </div>
+
+  <script>
+       let score = 0;
+    let container = document.getElementById('container');
+    let house = document.getElementById('house');
+    let package = document.getElementById('package');
+    let scoreDisplay = document.getElementById('score');
+
+    // Random positie genereren voor het huis
+    generateHouse();
+
+    // Event listeners toevoegen
+    package.addEventListener('dragstart', dragStart);
+    house.addEventListener('dragover', dragOver);
+    house.addEventListener('drop', drop);
+    scoreBtn.addEventListener('click', stortPunten);
+
+    function dragStart(event) {
+      event.dataTransfer.setData('text', event.target.id);
+    }
+
+    function dragOver(event) {
+      event.preventDefault();
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      let data = event.dataTransfer.getData('text');
+      let draggedElement = document.getElementById(data);
+
+      // Plaats het pakket op de plek waar het is neergezet
+      draggedElement.style.left = (event.clientX - container.offsetLeft - draggedElement.offsetWidth / 2) + 'px';
+      draggedElement.style.top = (event.clientY - container.offsetTop - draggedElement.offsetHeight / 2) + 'px';
+
+      // Controleer of het pakket direct bovenop het huis is geplaatst
+      let packageRect = draggedElement.getBoundingClientRect();
+      let houseRect = house.getBoundingClientRect();
+
+      if (isOnHouse(packageRect, houseRect)) {
+        score += 8; // Voeg 8 punten toe voor succesvolle levering
+        scoreDisplay.textContent = 'Score: ' + score;
+        generateHouse(); // Genereer een nieuw huis op een willekeurige positie
+      }
+    }
+
+    function isOnHouse(packageRect, houseRect) {
+      return (
+        packageRect.left >= houseRect.left &&
+        packageRect.right <= houseRect.right &&
+        packageRect.top >= houseRect.top &&
+        packageRect.bottom <= houseRect.bottom
+      );
+    }
+
+    function generateHouse() {
+      // Genereer willekeurige positie voor het huis binnen het containergebied
+      let maxX = container.offsetWidth - house.offsetWidth;
+      let maxY = container.offsetHeight - house.offsetHeight;
+
+      let randomX = Math.floor(Math.random() * maxX);
+      let randomY = Math.floor(Math.random() * maxY);
+
+      house.style.left = randomX + 'px';
+      house.style.top = randomY + 'px';
+    }
+
+    function stortPunten() {
+      // Sla de score op in sessionStorage
+      sessionStorage.setItem('selectedItemPrice', score);
+
+      // Stuur gebruiker naar een andere pagina (bijvoorbeeld 'aankoop.html') om de punten te storten
+      window.location.href = 'stortgeld.html';
+    }
+  </script>
+</body>
+</html>
