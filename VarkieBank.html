@@ -6,164 +6,41 @@
   <link rel="stylesheet" href="styles.css">
   <title>VarkieBank Online</title>
   <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
-  <style>
-    body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        color: white;
-        background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
-        -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    }
-
-.sticky-header {
-  display: flex;
-  background-color: #333;
-  padding: 10px 0;
-  color: #fff;
-  padding-left: 25px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Add some padding to the body to avoid content being hidden behind the fixed header */
-body {
-  padding-top: 60px; /* Adjust this value based on your header's height */
-}
-.money {
-    padding-bottom: 100px;
-    display: flex;
-    padding-left: 190px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.saldotext {
-    color: #000;
-    padding-left: 50px;
-}
-input {
-    color: black;
-    background-color: transparent;
-    border: 0px solid;
-    font-size: 60px;
-    height: 50px;
-    width: 500px;
-}
-input:focus {
-    border: 0px solid;
-}
-input:active {
-    border: 0px solid;
-}
-#items {
-    font-size: 19px;
-    color: white;
-    text-decoration: none;
-    transition: color 0.55s ease-in-out;
-}
-#items:hover {
-    color: red;
-}
-nav {
-    padding-top: 15px;
-    padding-left: 10px;
-}
-.saldo {
-    background-color: white;
-    padding-bottom: 60px;
-    padding-top: 10px;
-    border-radius: 10px;
-    margin-right: 20px;
-    width: 500px;
-}
-.flex {
-    display: flex;
-    text-decoration: none;
-}
-.nieuwe {
-    border-radius: 10px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    background-color: white;
-    width: 400px;
-    height: 328px;
-}
-button {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    background-color: transparent;
-    border: 0px solid;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-button:hover {
-  color: orange;
-}
-button:active {
-    transform: scale(1.1);
-}
-.icon1 {
-    width: 50px;
-    height: 50px;
-    background-color: orange;
-    border-radius: 50%;
-    padding: 5px;
-
-}
-.div {
-    padding-left: 5px;
-}
-.flexing {
-  display: flex;
-  padding-left: 50px;
-}
-.trans {
-  background-color: #fff;
-  border-radius: 10px;
-  color: black;
-  padding: 10px;
-  margin-left: 10px;
-}
-#displayMoney {
-  -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    outline: none;
-}
-  </style>
+  <link rel="stylesheet" href="styles/varkiebank.css">
 </head>
 <body>
-    <div style="padding-bottom: 60px;">
-        <header class="sticky-header">
-            <a class="flex" href="VarkieBank.html">
-                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
-                <h1 class="title" style="color: white;">VarkieBank</h1>
-            </a>
-            <nav>
-                <ul>
-                    <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
-                    <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
-                    <a id="items" href="cookie_clicker.html">Verdienen</a> <a>•</a>
-                    <a id="items" href="werken.html">Werken</a>
-                </ul>
-            </nav>
-          </header>
-        
-    </div>
-    <div style="padding-left: 50px; font-size: 20px;"><h1>Hallo Varkentje</h1></div>
-    <div class="flexing">
+  <div style="padding-bottom: 60px;">
+    <header class="sticky-header">
+      <a class="flex" href="VarkieBank.html">
+        <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
+        <h1 class="title" style="color: white;">VarkieBank</h1>
+      </a>
+      <nav>
+        <ul>
+          <a id="items" href="VarkieBank.html">Home</a>
+          <a style="cursor: default;">•</a>
+          <a id="items" href="winkel.html">Winkelen</a>
+          <a style="cursor: default;">•</a>
+          <a id="items" href="cookie_clicker.html">Verdienen</a>
+          <a style="cursor: default;">•</a>
+          <a id="items" href="werken.html">Werken</a>
+        </ul>
+      </nav>
+      <!-- Gebruikersmenu rechts -->
+      <div class="user-dropdown">
+        <!-- <img src="assets/pfp.webp" width="25px" height="25px" style="border-radius: 50px;" draggable="false"> -->
+        <span class="user-email" id="userEmail">Gebruiker</span>
+        <div class="user-dropdown-content">
+          <a href="#" onclick="changePassword()">Wijzig Wachtwoord</a>
+          <a href="#" onclick="logout()">Uitloggen</a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div style="padding-left: 20px; font-size: 20px;"><h1>Hallo Varkentje</h1></div>
+  <!-- De rest van de inhoud van de pagina blijft hetzelfde -->
+  <div class="flexing">
     <div class="saldo">
         <div class="saldotext">
             <h1>Je Saldo:</h1>
@@ -197,97 +74,14 @@ button:active {
     <div class="trans">
       <h1>Transactiegeschiedenis</h1>
       <ul style="color: #000;" id="transactions"></ul>
+      <button onclick="clearTransactions()" style="background-color: red; font-size: 15px; color: white; border-radius: 5px; padding: 5px 10px;">Verwijder Transacties</button>
     </div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-  var header = document.querySelector('.sticky-header');
-  var headerHeight = header.clientHeight;
 
-  window.addEventListener('scroll', function () {
-    var scrollY = window.scrollY || window.pageYOffset;
-
-    if (scrollY > headerHeight) {
-      header.classList.add('fixed');
-    } else {
-      header.classList.remove('fixed');
-    }
-  });
-});
-
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const displayMoneyInput = document.getElementById('displayMoney');
-      const storedMoney = localStorage.getItem('moneyAmount');
-      
-      if (storedMoney !== null) {
-        displayMoneyInput.value = storedMoney;
-      } else {
-        displayMoneyInput.value = 'Geen geldbedrag opgeslagen';
-      }
-    });
-  </script>
-  <script>
-    function stort() {
-        window.location="ad.html"
-    }
-    function verdien() {
-      window.location.href="cookie_clicker.html"
-    }
-    function winkel() {
-      window.location.href="winkel.html"
-    }
-    function aankopen() {
-      window.location.href="aankopen.html"
-    }
-    function werken() {
-      window.location.href="werken.html"
-    }
-    function school() {
-      window.location.href="koeienleren.html"
-    }
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const displayMoneyInput = document.getElementById('displayMoney');
-      const transactionsList = document.getElementById('transactions');
-      const storedMoney = parseFloat(localStorage.getItem('moneyAmount')) || 0;
-      const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
-      displayMoneyInput.value = `€${storedMoney.toFixed(2)}`;
-
-      // Display all transactions
-      storedTransactions.forEach(transaction => {
-        appendTransaction(transaction);
-      });
-    });
-
-    function goToSettings() {
-      window.location.href = 'instellingen.html';
-    }
-
-    function appendTransaction(transaction) {
-      const transactionsList = document.getElementById('transactions');
-      const transactionItem = document.createElement('li');
-      transactionItem.textContent = transaction;
-      transactionsList.appendChild(transactionItem);
-    }
-
-    function saveTransaction(transaction) {
-      const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
-      // Maintain a fixed number of transactions (e.g., 13)
-      const maxTransactions = 13;
-      storedTransactions.push(transaction);
-
-      // Remove the oldest transactions if the array exceeds the maximum
-      if (storedTransactions.length > maxTransactions) {
-        storedTransactions.shift();
-      }
-
-      localStorage.setItem('transactions', JSON.stringify(storedTransactions));
-    }
-  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+  <script src="scripts/varkiebank.js"></script>
 </body>
 </html>

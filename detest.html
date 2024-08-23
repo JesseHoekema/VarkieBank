@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Conection | storten</title>
+  <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #displayClicks {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #depositButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    body {
+        padding-top: 60px;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+    }
+
+.sticky-header {
+  display: flex;
+  background-color: #333;
+  padding: 10px 0;
+  color: #fff;
+  padding-left: 25px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.flex {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.flex {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+nav {
+    padding-top: 15px;
+    padding-left: 10px;
+}
+#items {
+    font-size: 19px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.55s ease-in-out;
+}
+#items:hover {
+    color: red;
+}
+.box {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}
+.button {
+  border:  1px solid pink;
+  border-radius: 10px;
+  background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+  transition: transform 0.25s ease-in-out;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+h6 {
+    font-size: 0px;
+}
+  </style>
+</head>
+<body>
+    <div style="padding-bottom: 60px;">
+        <header class="sticky-header">
+            <a class="flex" href="VarkieBank.html">
+                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <h1 class="title" style="color: white;">VarkieBank</h1>
+            </a>
+            <nav>
+              <ul>
+                <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
+                <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
+                <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
+                <a id="items" href="cookie_clicker.html">Verdienen</a>
+            </ul>
+            </nav>
+          </header>
+        
+    </div>
+    <div style="padding-left: 35%;">
+        <div class="box">
+            <h2>Varkies Storten Naar Saldo</h2>
+            <p>Stort <span id="scoreDisplay"></span> Varkies Naar Je Saldo?</p>
+            &nbsp;<br>
+            <button id="depositButton" onclick="depositPoints()" class="button">Storten</button><br>
+            <a href="VarkieBank.html" class="debiel" style="color: black; font-size: 10px; padding-top: 5px;">Laat Maar</a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+
+    <script>
+      // Firebase configuration (reuse your config)
+      const firebaseConfig = {
+        apiKey: "AIzaSyAyYvZz5iFrvfTyxkrGr31eyXEBVwP19t8",
+  authDomain: "chatgpt-login-form.firebaseapp.com",
+  databaseURL: "https://chatgpt-login-form-default-rtdb.firebaseio.com",
+  projectId: "chatgpt-login-form",
+  storageBucket: "chatgpt-login-form.appspot.com",
+  messagingSenderId: "296337753854",
+  appId: "1:296337753854:web:b050ebfe6cba224a1b87af"
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          const userId = user.uid;
+
+          // Load the saved score from sessionStorage
+          let score = sessionStorage.getItem('selectedItemPrice');
+          if (score) {
+            document.getElementById('scoreDisplay').textContent = score;
+          }
+
+          document.getElementById('depositButton').addEventListener('click', function() {
+            if (score) {
+              score = parseInt(score);
+
+              // Get the user's current moneyAmount from Firestore
+              getMoneyAmount(userId).then((moneyAmount) => {
+                moneyAmount = parseInt(moneyAmount) + score;
+
+                // Update the user's moneyAmount in Firestore
+                updateMoneyAmount(userId, moneyAmount).then(() => {
+                  sessionStorage.removeItem('selectedItemPrice');
+
+                  alert('Storting voltooid! Bedankt voor het storten.');
+                  window.location.href = 'VarkieBank.html';
+                }).catch((error) => {
+                  console.error('Error updating money amount:', error);
+                  alert('Er is een fout opgetreden bij het storten.');
+                });
+              }).catch((error) => {
+                console.error('Error retrieving money amount:', error);
+                alert('Er is een fout opgetreden bij het ophalen van het saldo.');
+              });
+            } else {
+              alert('Er zijn geen Varkies om te storten.');
+            }
+          });
+        } else {
+          window.location.href = 'login.html';
+        }
+      });
+
+      // Function to get moneyAmount from Firestore
+      function getMoneyAmount(userId) {
+        return db.collection('users').doc(userId).get().then((doc) => {
+          if (doc.exists) {
+            return doc.data().moneyAmount;
+          } else {
+            throw new Error('User data not found');
+          }
+        });
+      }
+
+      // Function to update moneyAmount in Firestore
+      function updateMoneyAmount(userId, newAmount) {
+        return db.collection('users').doc(userId).update({
+          moneyAmount: newAmount
+        });
+      }
+    </script>
+</body>
+</html>

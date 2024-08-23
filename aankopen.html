@@ -47,31 +47,15 @@
     </header>
   
   <div id="paidItemsContainer">
-
   </div>
 
-  <script>
-    // Functie om gekochte items op te halen en te tonen
-    function displayPaidItems() {
-      let paidProducts = JSON.parse(localStorage.getItem('paidproducts')) || [];
-
-      let container = document.getElementById('paidItemsContainer');
-
-      // Loop door alle gekochte items en voeg ze toe aan de pagina
-      paidProducts.forEach(function(item) {
-        let div = document.createElement('div');
-        div.classList.add('item');
-        
-        let itemName = document.createElement('h3');
-        itemName.textContent = item.name;
-
-        div.appendChild(itemName);
-        container.appendChild(div);
-      });
-    }
-
-    // Roep de functie aan om gekochte items te tonen wanneer de pagina geladen is
-    displayPaidItems();
-  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+  <script src="scripts/aankopen.js"></script>
 </body>
 </html>

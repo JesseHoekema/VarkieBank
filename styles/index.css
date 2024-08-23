@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+    -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+overflow: hidden;
+}
+
+.sticky-header {
+display: flex;
+background-color: #333;
+padding: 10px 0;
+color: #fff;
+padding-left: 25px;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+}
+
+/* Add some padding to the body to avoid content being hidden behind the fixed header */
+body {
+padding-top: 80px; /* Adjust this value based on your header's height */
+}
+#items {
+font-size: 19px;
+color: white;
+text-decoration: none;
+transition: color 0.55s ease-in-out;
+}
+#items:hover {
+color: red;
+}
+nav {
+padding-top: 15px;
+padding-left: 10px;
+}
+.flex {
+display: flex;
+text-decoration: none;
+}
+.flexing {
+display: flex;
+padding-left: 50px;
+flex-wrap: nowrap;
+}
+#account {
+    position: fixed;
+    right: 50px;
+    margin-top: 15px;
+    display: flex;
+}
+#home h1 {
+    margin-left: 10px;
+}
+#home {
+    background-image: url("/assets/1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 700px;
+}
+#second {
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    width: 400px;
+    height: 130px;
+    position: fixed;
+    bottom: 260px;
+    padding: 5px 10px;
+    padding-bottom: 10px;
+    margin-left: 50px;
+}

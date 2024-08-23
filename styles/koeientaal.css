@@ -1,0 +1,71 @@
+body {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://img.freepik.com/free-photo/cows-eating-lush-grass-green-field-front-fuji-mountain-japan_335224-36.jpg?w=2000&t=st=1705942424~exp=1705943024~hmac=f48f155ab319b59af0380bbf37b59ca7fb8a88b6552de18cc178714c901f18e5');
+    font-family: Arial, sans-serif;
+  }
+  .quiz-container {
+    background-position: 0px;
+    background-color: white;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .question {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  .options {
+    margin-top: 10px;
+  }
+  .option {
+    margin-bottom: 5px;
+  }
+  .btn {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #result {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #cow-button {
+    background-image: url('https://ineedfabric.com/cdn/shop/products/black-white-cow-spot-4-fabric-193306.png?v=1616665656');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #91ff00;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.25s ease-in-out;
+    
+  }
+  #cow-button:hover {
+      transform: scale(1.05);
+  }
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid;
+    border-radius: 5px;
+    width: 300px;
+    box-sizing: border-box;
+    outline: none; /* Remove default input outline */
+  }

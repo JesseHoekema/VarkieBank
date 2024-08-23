@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pakketjes Bezorgen | PiggyJobs</title>
-  <link rel="shortcut icon" href="assets/work.png" type="image/x-icon">
-  <link rel="stylesheet" href="styles/bezorgen.css">
-  <style>
-    body {
+body {
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
@@ -62,21 +53,3 @@
       z-index: 1000;
       left: 0;
   }
-  </style>
-</head>
-<body>
-    <header class="sticky-header">
-        <h1>PiggyJobs</h1>
-    </header>
-    <div id="info">
-        <div class="score" id="score">Score: 0</div>
-        <div class="btn" id="scoreBtn">Stort Punten</div>
-    </div>
-    <div id="container">
-            <div class="house" id="house"></div>
-            <div class="package" id="package" draggable="true"></div>
-    </div>
-
-    <script src="scripts/bezorgen.js"></script>
-</body>
-</html>

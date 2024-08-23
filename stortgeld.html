@@ -5,90 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App Conection | storten</title>
   <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin: 50px;
-    }
-
-    #displayClicks {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-
-    #depositButton {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    body {
-        padding-top: 60px;
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        color: white;
-        background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
-    }
-
-.sticky-header {
-  display: flex;
-  background-color: #333;
-  padding: 10px 0;
-  color: #fff;
-  padding-left: 25px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-}
-.flex {
-    display: flex;
-}
-a {
-    text-decoration: none;
-    color: white;
-}
-.flex {
-    display: flex;
-}
-a {
-    text-decoration: none;
-    color: white;
-}
-nav {
-    padding-top: 15px;
-    padding-left: 10px;
-}
-#items {
-    font-size: 19px;
-    color: white;
-    text-decoration: none;
-    transition: color 0.55s ease-in-out;
-}
-#items:hover {
-    color: red;
-}
-.box {
-  background-color: white;
-  color: black;
-  padding: 10px;
-  width: 500px;
-  height: 300px;
-  border-radius: 10px;
-}
-.button {
-  border:  1px solid pink;
-  border-radius: 10px;
-  background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
-  transition: transform 0.25s ease-in-out;
-}
-.button:hover {
-  transform: scale(1.1);
-}
-h6 {
-    font-size: 0px;
-}
-  </style>
+  <link rel="stylesheet" href="styles/stortgeld.css">
 </head>
 <body>
     <div style="padding-bottom: 60px;">
@@ -118,40 +35,10 @@ h6 {
         </div>
     </div>
 
-  <script>
-    function depositPoints() {
-      let score = sessionStorage.getItem('selectedItemPrice');
-      if (score) {
-        score = parseInt(score);
-
-        let moneyAmount = localStorage.getItem('moneyAmount') || 0;
-        moneyAmount = parseInt(moneyAmount);
-
-        moneyAmount += score;
-
-        localStorage.setItem('moneyAmount', moneyAmount);
-        sessionStorage.removeItem('selectedItemPrice');
-
-        // Update transaction history
-        const transaction = `+ €${score.toFixed(2)} gestort (${new Date().toLocaleString()})`;
-        const transactionHistory = JSON.parse(localStorage.getItem('transactions')) || [];
-        transactionHistory.push(transaction);
-        localStorage.setItem('transactions', JSON.stringify(transactionHistory));
-
-        alert('Storting voltooid! Bedankt voor het storten.');
-        window.location.href = 'VarkieBank.html';
-      } else {
-        alert('Er zijn geen Varkies om te storten.');
-      }
-    }
-
-    // Laad de opgeslagen score in
-    window.onload = function() {
-      let score = sessionStorage.getItem('selectedItemPrice');
-      if (score) {
-        document.getElementById('scoreDisplay').textContent = score;
-      }
-    };
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/stortgeld.js"></script>
+    
 </body>
 </html>

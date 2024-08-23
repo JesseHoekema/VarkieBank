@@ -1,0 +1,82 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 50px;
+  }
+
+  #displayClicks {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  #depositButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  body {
+      padding-top: 60px;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+  }
+
+.sticky-header {
+display: flex;
+background-color: #333;
+padding: 10px 0;
+color: #fff;
+padding-left: 25px;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+}
+.flex {
+  display: flex;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.flex {
+  display: flex;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+nav {
+  padding-top: 15px;
+  padding-left: 10px;
+}
+#items {
+  font-size: 19px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.55s ease-in-out;
+}
+#items:hover {
+  color: red;
+}
+.box {
+background-color: white;
+color: black;
+padding: 10px;
+width: 500px;
+height: 300px;
+border-radius: 10px;
+}
+.button {
+border:  1px solid pink;
+border-radius: 10px;
+background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+transition: transform 0.25s ease-in-out;
+}
+.button:hover {
+transform: scale(1.1);
+}
+h6 {
+  font-size: 0px;
+}

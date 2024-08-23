@@ -111,70 +111,24 @@ h6 {
                     <a id="items" href="cookie_clicker.html">Verdienen</a>
                 </ul>
             </nav>
-          </header>
-        
+        </header>
     </div>
+
     <div style="padding-left: 35%;">
-    <div class="box">
-        <h2>Afrekenen VarkieBank</h2>
-        <p>Je hebt gekozen voor een artikel van <img src="assets/Piggy_Tokens.webp" width="20px"><span id="itemPrice"></span>.</p>
-      
-        <label for="confirmButton">Betalen?</label><br>
-        <button class="button" onclick="confirmPurchase()">Betaal</button>
-</div>
+      <div class="box">
+          <h2>Afrekenen VarkieBank</h2>
+          <p>Je hebt gekozen voor een artikel van <img src="assets/Piggy_Tokens.webp" width="20px"><span id="itemPrice"></span>.</p>
+          <label for="confirmButton">Betalen?</label><br>
+          <button class="button" onclick="confirmPurchase()">Betaal</button>
+      </div>
+    </div>
 
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const selectedItemPrice = parseInt(sessionStorage.getItem('selectedItemPrice')) || 0;
-      document.getElementById('itemPrice').textContent = selectedItemPrice;
-
-      // Display transaction history
-      const transactionHistory = JSON.parse(localStorage.getItem('transactions')) || [];
-      const transactionList = document.getElementById('transactionHistory');
-
-      transactionHistory.forEach(transaction => {
-        appendTransaction(transaction);
-      });
-    });
-
-    function confirmPurchase() {
-      const selectedItemPrice = parseInt(sessionStorage.getItem('selectedItemPrice')) || 0;
-      const storedMoney = parseInt(localStorage.getItem('moneyAmount')) || 0;
-
-      if (storedMoney < selectedItemPrice) {
-        alert('Je hebt niet genoeg geld om dit artikel te kopen!');
-      } else {
-        const newMoneyAmount = storedMoney - selectedItemPrice;
-        let itemName = sessionStorage.getItem('selectedItemName');
-        localStorage.setItem('moneyAmount', newMoneyAmount);
-        let paidProducts = JSON.parse(localStorage.getItem('paidproducts')) || [];
-        paidProducts.push({ name: itemName });
-        localStorage.setItem('paidproducts', JSON.stringify(paidProducts));
-        if (itemName && itemName === "Floppa Coin") {
-          localStorage.setItem('floppaCoin', 'True');
-        }
-        
-        // Optioneel: Verwijder het item uit sessionStorage
-        sessionStorage.removeItem('selectedItemName');
-        // Update transaction history
-        const transaction = `- €${selectedItemPrice.toFixed(2)} gekocht (${new Date().toLocaleString()})`;
-        const transactionHistory = JSON.parse(localStorage.getItem('transactions')) || [];
-        transactionHistory.push(transaction);
-        localStorage.setItem('transactions', JSON.stringify(transactionHistory));
-
-        alert('Aankoop voltooid! Bedankt voor je aankoop.');
-        sessionStorage.removeItem("selectedItemPrice");
-        window.location.href = 'VarkieBank.html';
-      }
-    }
-
-    function appendTransaction(transaction) {
-      const transactionList = document.getElementById('transactionHistory');
-      const transactionItem = document.createElement('li');
-      transactionItem.textContent = transaction;
-      transactionList.appendChild(transactionItem);
-    }
-  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+  <script src="scripts/aankoop.js"></script>
+</body>
+</html>
 </body>
 </html>
