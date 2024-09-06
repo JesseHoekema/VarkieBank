@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search for Code</title>
+  <link rel="stylesheet" href="styles/styles.css"> <!-- Voeg je eigen CSS toe als je dat wilt -->
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="styles/cadeukaart.css">
+</head>
+<body>
+    <div style="padding-bottom: 60px;">
+        <header class="sticky-header">
+            <a class="flex" href="VarkieBank.html">
+                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <h1 class="title" style="color: white;">VarkieBank</h1>
+            </a>
+            <nav>
+              <ul>
+                <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
+                <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
+                <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
+                <a id="items" href="cookie_clicker.html">Verdienen</a>
+            </ul>
+            </nav>
+          </header>
+        
+    </div>
+    <div style="padding-left: 35%;">
+        <div class="box">
+            <h1>Voer Code In</h1>
+            <form id="searchForm">
+              <input type="text" id="codeInput" placeholder="Enter code" required>
+              <button type="submit">Search</button>
+            </form>
+            <p id="result"></p>
+        </div>
+    </div>
+
+  <script>
+        // Firebase configuration
+        const firebaseConfig = {
+      apiKey: "AIzaSyAyYvZz5iFrvfTyxkrGr31eyXEBVwP19t8",
+      authDomain: "chatgpt-login-form.firebaseapp.com",
+      projectId: "chatgpt-login-form",
+      storageBucket: "chatgpt-login-form.appspot.com",
+      messagingSenderId: "296337753854",
+      appId: "1:296337753854:web:b050ebfe6cba224a1b87af"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Function to search for and delete the code
+    function searchAndDeleteCode(code) {
+      const resultElement = document.getElementById('result');
+      db.collection('cards').get()
+        .then(querySnapshot => {
+          let found = false;
+          querySnapshot.forEach(doc => {
+            const data = doc.data();
+            if (data.codes && data.codes.includes(code)) {
+              // Remove the code from the array
+              const updatedCodes = data.codes.filter(c => c !== code);
+              // Update the document with the new array
+              db.collection('cards').doc(doc.id).update({
+                codes: updatedCodes
+              })
+              .then(() => {
+                sessionStorage.setItem("SelectedItemPrice", doc.id)
+                found = true;
+                window.location.href = 'stortgeld.html';
+              })
+              .catch(error => {
+                console.error('Error removing code:', error);
+                resultElement.textContent = 'Error removing code.';
+              });
+            }
+          });
+          if (!found) {
+            resultElement.textContent = 'Ongeldige Code';
+          }
+        })
+        .catch(error => {
+          console.error('Error searching for code:', error);
+          resultElement.textContent = 'Error searching for code.';
+        });
+    }
+
+    // Event listener for form submission
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const code = document.getElementById('codeInput').value;
+      searchAndDeleteCode(code);
+    });
+
+    // Authentication check
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        alert('You need to be logged in to access this page.');
+        window.location.href = 'login.html'; // Redirect to login page if not authenticated
+      }
+    });
+  </script>
+</body>
+</html>
