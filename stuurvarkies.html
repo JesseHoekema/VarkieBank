@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Conection | storten</title>
+  <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
+  <link rel="stylesheet" href="styles/stortgeld.css">
+  <link rel="stylesheet" href="styles/stuurgeld.css">
+</head>
+<body>
+    <div style="padding-bottom: 60px;">
+        <header class="sticky-header">
+            <a class="flex" href="VarkieBank.html">
+                <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;">
+                <h1 class="title" style="color: white;">VarkieBank</h1>
+            </a>
+            <nav>
+              <ul>
+                <a></a><a id="items" href="VarkieBank.html">Home </a><a style="cursor: default;">•</a>
+                <a id="items" href="ad.html"> Geld Storten </a>•<a></a>
+                <a id="items" href="winkel.html">Winkelen</a> <a>•</a>
+                <a id="items" href="cookie_clicker.html">Verdienen</a>
+            </ul>
+            </nav>
+          </header>
+        
+    </div>
+    <div style="padding-left: 35%;">
+        <div class="box">
+            <h2>Stuur Varkies Naar Iemand Anders</h2>
+            <form id="sendMoneyForm">
+                <input type="email" id="recipientEmail" placeholder="Email ontvanger" required><br>
+                <input type="number" id="amount" placeholder="Bedrag" required min="1"><br>
+                <button type="submit">Verstuur Geld</button>
+            </form>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/stuurgeld.js"></script>
+    
+</body>
+</html>

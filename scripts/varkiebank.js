@@ -117,3 +117,4 @@ function aankopen() { window.location.href="aankopen.html"; }
 function werken() { window.location.href="werken.html"; }
 function school() { window.location.href="koeienleren.html"; }
 function cadeukaart() { window.location.href="cadeukaart.html"; }
+function geldsturen() { window.location.href="stuurvarkies.html"; }
