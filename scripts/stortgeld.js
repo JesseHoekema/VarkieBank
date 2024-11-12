@@ -27,7 +27,7 @@ const firebaseConfig = {
       document.getElementById('depositButton').addEventListener('click', function() {
         if (score) {
           score = parseFloat(score);
-
+          
           // Get the user's current moneyAmount from Firestore
           getMoneyAmount(userId).then((moneyAmount) => {
             moneyAmount = parseFloat(moneyAmount) || 0;
