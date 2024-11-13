@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varkies Clicker</title>
+  <link rel="shortcut icon" href="assets/pg.jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="/styles/cookie_clicker.css">
+</head>
+<body>
+  <header id="mainHeader">
+    <img src="/pizza/pizza.png" alt="PiggyGames Logo" id="logo">
+    <div>
+      <h1>Papa Is Een Pizza!!</h1>
+      <p id="p">Papa Is Een Pizza</p>
+      <button onclick="toggleHeight()" id="bs">&#9650;</button>
+    </div>
+  </header>
+  <div class="div">
+    <audio src="assets/sounds/start.mp3" autoplay loop></audio>
+    <h2 style="padding-top: 5px;">Varkie Clicker</h2>
+    <img id="cookie" src="/pizza/pizza.png" alt="Cookie" onclick="floppaSkin()">
+    <div id="clickCount">Varkies: <span id="clicks">0</span></div>
+    <button id="depositButton" onclick="saveClicks()">Deposit</button>
+    <p style="font-size: 10px;">Zorg Dat Je Eerst Bent Ingelogd</p>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+  <script src="/pizza/pizza.js"></script>
+</body>
+</html>
