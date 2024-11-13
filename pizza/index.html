@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .login-container input[type="password"] {
+            width: 200px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 50px;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div class="login-container">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkPassword()">Login</button>
+    </div>
+    <p id="message" class="message"></p>
+</div>
+
+<script>
+    function checkPassword() {
+        const secretPassword = "riseafloppa";
+        const enteredPassword = document.getElementById("password").value;
+        const messageElement = document.getElementById("message");
+
+        if (enteredPassword === secretPassword) {
+            messageElement.style.color = "green";
+            messageElement.textContent = "Toegang verleend!";
+            window.location.href = "/pizza/pizza.html";
+        } else {
+            messageElement.style.color = "red";
+            messageElement.textContent = "Fout wachtwoord, probeer opnieuw.";
+        }
+    }
+</script>
+
+</body>
+</html>
