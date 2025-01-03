@@ -2,19 +2,19 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     color: white;
-    background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);
+    /* background: linear-gradient(to left, #ff709d 0%, #f15e93 25%, #e04d89 50%, #d03b7f 75%, #c12a76 100%);*/
+    background-color: #FF709D;
     -webkit-touch-callout: none;
 -webkit-user-select: none;
 -khtml-user-select: none;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
-overflow: hidden;
 }
 
 .sticky-header {
 display: flex;
-background-color: #333;
+background-color: #FF709D;
 padding: 10px 0;
 color: #fff;
 padding-left: 25px;
@@ -60,12 +60,13 @@ flex-wrap: nowrap;
     margin-left: 10px;
 }
 #home {
-    background-image: url("/assets/1.png");
+    background-image: url("/assets/testhome.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 700px;
+    height: 660px;
+    margin-top: 1.3vw;
 }
 #second {
     background-color: white;
@@ -78,4 +79,68 @@ flex-wrap: nowrap;
     padding: 5px 10px;
     padding-bottom: 10px;
     margin-left: 50px;
+}
+.divider {
+    border-top: 2px solid rgba(51, 51, 51, 0.2);   /* You can change the color to match your design */
+    width: 97%;  /* Makes the divider span the entire width */
+    margin: 20px 0;  /* Adjust space around the divider */
+    margin-left: 22px;
+    border-radius: 100px;
+    position: fixed;
+    top: 79px;
+}
+  
+  .divider p {
+    position: absolute;
+    top: -12px;  /* Adjusts the position of the text (if you want it visible) */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;  /* Background color to cover the line */
+    padding: 0 10px;  /* Adds padding around the text */
+    font-size: 12px;
+    display: block;
+  }
+#about {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+#text-about {
+    
+    background: rgb(255, 255, 255, 0.7);
+    color: black;
+    padding: 20px 20px;
+    text-align: left;
+    height: 400px;
+    width: 50vw;
+    border-radius: 0px 20px 20px 0px;
+    margin-top: 5vw;
+}
+#text-about h1 {
+    margin-bottom: 0px;
+    margin-top: 2px;
+    font-size: 40px;
+}
+#text-about h3 {
+    margin-top: 2px;
+    font-size: 16px;
+}
+#image-about img {
+    width: 40vw;
+    border-radius: 20px 0px 0px 20px;
+}
+footer {
+    display: flex;
+    background-color: #fff;
+    color: #FF709D;
+    padding: 10px;
+    margin-top: 50px;
+}
+footer p {
+    font-size: 16px;
+    margin-left: 5px;
+}
+footer img {
+    width: 50px;
+    height: 50px;
 }

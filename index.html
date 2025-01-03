@@ -6,7 +6,7 @@
     <title>Home | VarkieBank</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
-<body>
+<body id="body">
     <header class="sticky-header">
         <a class="flex" href="VarkieBank.html">
           <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
@@ -14,24 +14,68 @@
         </a>
         <nav>
           <ul>
-            <a id="items" href="index.html">Home</a>
+            <a id="items" href="#body">Home</a>
             <a style="cursor: default;">•</a>
-            <a id="items" href="winkel.html">Over</a>
+            <a id="items" href="#about">Over</a>
           </ul>
         </nav>
         <!-- Gebruikersmenu rechts -->
          <div id="account">
             <a href="login.html">
-                <img src="assets/9038102-removebg-preview.png" style="border-radius: 50%; width: 55px;">
+                <img src="assets/myaccount.png" style="border-radius: 50%; width: 55px;">
             </a>
          </div>
-        </header>
+        </header>  
+        <div class="divider">
+          <p style="display: none;">Div</p>
+        </div>      
         <div id="home">
-            <div id="second">
-                <h1>De Manier Voor 
-                <br>Digitaal Bankieren In VarkieLand
-                </h1>
-            </div>
+        </div>   
+        <div id="about">
+          <div id="text-about">
+            <h1>Digitaal Bankieren</h1>
+            <h3>In VarkieLand</h3>
+            <p>
+              Welkom bij VarkieBank! De bank van VarkieLand.<br>
+              <br>
+
+Verdien en gebruik je geld met onze nieuwe website om je varkies te beheren!
+Je kan ook verdienen met het spelen vann games of te werken. Heb je genoeg Varkies? koop dan wat uit de PigShop.
+Of gift je vrienden wat Varkies met de VarkieVerstuurder. Ben je in VarkieLand? betaal dan met VarkiePay via je VarkiePas.
+<br>
+<br>
+
+Veel succes!
+            </p>
+          </div>
+          <div id="image-about">
+            <img src="assets/mockup1cut.png">
+          </div>
         </div>
+        <footer>
+          <img src="assets/Piggy_Tokens.webp">
+          <p>Copyright VarkieBank</p>
+        </footer>
+        <script>
+          // Add this to your JavaScript file
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update URL without jumping (optional)
+            history.pushState(null, '', targetId);
+        }
+    });
+});
+        </script>
 </body>
 </html>
