@@ -9,6 +9,7 @@ body {
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
+overflow: hidden;
 }
 
 .sticky-header {
@@ -149,10 +150,11 @@ outline: none;
   display: none;
   position: absolute;
   right: 0;
-  background-color: #333;
+  background-color: rgb(255, 100, 157);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 20px 25px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
 }
 
 .user-dropdown-content a {
