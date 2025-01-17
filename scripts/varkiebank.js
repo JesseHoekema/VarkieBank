@@ -109,6 +109,52 @@ if (user) {
 });
 }
 
+
+// The Username Of Hallo Varkentje
+function checkUsername() {
+  const user = auth.currentUser;
+  const usernameText = document.getElementById('usernameText');
+
+  if (user) {
+      const uid = user.uid;
+      const userRef = db.collection('users').doc(uid);
+
+      userRef.get().then((doc) => {
+          if (doc.exists) {
+              const userData = doc.data();
+              if (userData.username) {
+                  // If the username exists, show a greeting
+                  usernameText.innerText = `Hallo ${userData.username}`;
+              } else {
+                  // If no username, ask the user to enter it
+                  const popupUsername = document.getElementById('popupOverlay');
+
+                  popupUsername.style.display = 'block'
+                  document.getElementById('submitUsername').addEventListener('click', () => {
+                      const username = document.getElementById('username').value;
+                      if (username) {
+                          // Save the username in Firestore
+                          userRef.set({ username: username }, { merge: true }).then(() => {
+                            usernameText.innerText = `Hallo ${username}`;
+                            popupUsername.style.display = 'none'
+                          }).catch((error) => {
+                              console.error('Error setting username: ', error);
+                          });
+                      }
+                  });
+              }
+          } else {
+              // Create a new document for the user if it doesn't exist
+              userRef.set({}).then(() => {
+                  checkUsername();
+              });
+          }
+      }).catch((error) => {
+          console.error('Error getting user data: ', error);
+      });
+}
+}
+
 // Navigatie functies blijven hetzelfde
 function stort() { window.location="ad.html"; }
 function verdien() { window.location.href="cookie_clicker.html"; }
@@ -118,3 +164,11 @@ function werken() { window.location.href="werken.html"; }
 function school() { window.location.href="koeienleren.html"; }
 function cadeukaart() { window.location.href="cadeukaart.html"; }
 function geldsturen() { window.location.href="stuurvarkies.html"; }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+      checkUsername(); // This will run the function after 2 seconds
+  }, 500); // 2000ms = 2 seconds
+});

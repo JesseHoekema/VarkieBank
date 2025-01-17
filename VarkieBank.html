@@ -7,8 +7,17 @@
   <title>VarkieBank Online</title>
   <link rel="shortcut icon" href="assets/Piggy_Tokens.webp" type="image/x-icon">
   <link rel="stylesheet" href="styles/varkiebank.css">
+  <link rel="stylesheet" href="styles/popup.css">
 </head>
 <body>
+  <div id="popupOverlay" class="overlay">
+    <div class="popup-box">
+      <h2>Voer Je Gewenste Naam In</h2>
+      <p>Het Word Aanbevolen Om Aleen Je Voornaam Te Doen</p>
+      <input type="text" id="username" placeholder="Naam"/>
+      <button id="submitUsername">Submit</button>
+    </div>
+  </div>
   <div style="padding-bottom: 60px;">
     <header class="sticky-header">
       <a class="flex" href="VarkieBank.html">
@@ -33,12 +42,13 @@
         <div class="user-dropdown-content">
           <a href="#" onclick="changePassword()">Wijzig Wachtwoord</a>
           <a href="#" onclick="logout()">Uitloggen</a>
+          <a href="/username.html">Wijzig Naam</a>
         </div>
       </div>
     </header>
   </div>
 
-  <div style="padding-left: 20px; font-size: 20px;"><h1>Hallo Varkentje</h1></div>
+  <div style="padding-left: 20px; font-size: 20px;"><h1 id="usernameText">Hallo Varkentje</h1></div>
   <!-- De rest van de inhoud van de pagina blijft hetzelfde -->
   <div class="flexing">
     <div class="saldo">
@@ -94,6 +104,7 @@
       <button onclick="clearTransactions()" style="background-color: red; font-size: 15px; color: white; border-radius: 5px; padding: 5px 10px;">Verwijder Transacties</button>
     </div>
   </div>
+</div>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>

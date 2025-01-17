@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/username.css">
+</head>
+<body>
+    <header class="sticky-header">
+        <a class="flex" href="VarkieBank.html">
+          <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
+          <h1 class="title" style="color: white;">VarkieBank</h1>
+        </a>
+        <nav>
+          <ul>
+            <a id="items" href="VarkieBank.html">Home</a>
+            <a style="cursor: default;">•</a>
+            <a id="items" href="winkel.html">Winkelen</a>
+            <a style="cursor: default;">•</a>
+            <a id="items" href="cookie_clicker.html">Verdienen</a>
+            <a style="cursor: default;">•</a>
+            <a id="items" href="werken.html">Werken</a>
+          </ul>
+        </nav>
+        <!-- Gebruikersmenu rechts -->
+         
+      </header>
+      <div style="padding-left: 35%;">
+        <div class="box">
+            <h2>Naam Wijzigen</h2>
+            <p>Voer Je Nieuwe Naam In</p>
+            <input id="newUsername" type="text">
+            <br>
+            <button id="depositButton" class="button" onclick="editUsername()">Aanpassen</button><br>
+            <a href="VarkieBank.html" class="debiel" style="color: black; font-size: 10px; padding-top: 5px;">Laat Maar</a>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/username.js"></script>
+</body>
+</html>
