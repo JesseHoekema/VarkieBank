@@ -127,21 +127,7 @@ function checkUsername() {
                   usernameText.innerText = `Hallo ${userData.username}`;
               } else {
                   // If no username, ask the user to enter it
-                  const popupUsername = document.getElementById('popupOverlay');
-
-                  popupUsername.style.display = 'block'
-                  document.getElementById('submitUsername').addEventListener('click', () => {
-                      const username = document.getElementById('username').value;
-                      if (username) {
-                          // Save the username in Firestore
-                          userRef.set({ username: username }, { merge: true }).then(() => {
-                            usernameText.innerText = `Hallo ${username}`;
-                            popupUsername.style.display = 'none'
-                          }).catch((error) => {
-                              console.error('Error setting username: ', error);
-                          });
-                      }
-                  });
+                  window.location.href = "username.html"
               }
           } else {
               // Create a new document for the user if it doesn't exist
