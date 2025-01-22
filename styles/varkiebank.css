@@ -193,3 +193,15 @@ margin-bottom: 0px;
 #article p {
   font-size: 15px;
 }
+.VarkieCredits {
+  right: 260px;
+  margin-top: 15px;
+  position: fixed;
+  display: flex;
+}
+.VarkieCredits img {
+  width: auto;
+  height: 22px;
+  margin-top: 14px;
+  margin-right: 5px;
+}

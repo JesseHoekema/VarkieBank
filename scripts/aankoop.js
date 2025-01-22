@@ -16,7 +16,7 @@ const firebaseConfig = {
 
   document.addEventListener('DOMContentLoaded', function () {
     const selectedItemPrice = parseInt(sessionStorage.getItem('selectedItemPrice')) || 0;
-    document.getElementById('itemPrice').textContent = `€${selectedItemPrice}`;
+    document.getElementById('itemPrice').textContent = `${selectedItemPrice}`;
   });
 
   function confirmPurchase() {
@@ -72,19 +72,25 @@ const firebaseConfig = {
                       db.collection('users').doc(userId).update({
                         floppaCoin: true
                       }).then(() => {
-                        alert('Aankoop voltooid! Bedankt voor je aankoop.');
-                        sessionStorage.removeItem('selectedItemPrice');
-                        sessionStorage.removeItem('selectedItemName');
-                        window.location.href = 'VarkieBank.html';
+                        convertCredits()
+                        setTimeout(() => {
+                          alert('Aankoop voltooid! Bedankt voor je aankoop.');
+                          sessionStorage.removeItem('selectedItemPrice');
+                          sessionStorage.removeItem('selectedItemName');
+                          window.location.href = 'VarkieBank.html';
+                        }, 1000);
                       }).catch((error) => {
                         console.error('Error updating floppaCoin status: ', error);
                         alert('Er is een fout opgetreden bij het bijwerken van de Floppa Coin status.');
                       });
                     } else {
-                      alert('Aankoop voltooid! Bedankt voor je aankoop.');
-                      sessionStorage.removeItem('selectedItemPrice');
-                      sessionStorage.removeItem('selectedItemName');
-                      window.location.href = 'VarkieBank.html';
+                      convertCredits()
+                      setTimeout(() => {
+                        alert('Aankoop voltooid! Bedankt voor je aankoop.');
+                        sessionStorage.removeItem('selectedItemPrice');
+                        sessionStorage.removeItem('selectedItemName');
+                        window.location.href = 'VarkieBank.html';
+                      }, 1000);
                     }
                   }).catch((error) => {
                     console.error('Error adding transaction: ', error);
@@ -111,3 +117,42 @@ const firebaseConfig = {
       }
     });
   }
+  function updateCredits(amountToAdd) {
+    const user = auth.currentUser;
+    const creditsText = document.getElementById('creditsText');
+
+    if (user) {
+        const uid = user.uid;
+        const userRef = db.collection('users').doc(uid);
+
+        userRef.get().then((doc) => {
+            const userData = doc.data();
+            const currentCredits = userData.credits || 0; // Als credits niet bestaan, begin bij 0
+            const newCredits = currentCredits + amountToAdd;
+
+            // Update de credits in Firestore
+            userRef.update({ credits: newCredits }).then(() => {
+                console.log(`Je nieuwe credits: ${newCredits}`)
+            });
+        }).catch((error) => {
+            console.error('Fout bij het bijwerken van credits: ', error);
+        });
+    }
+}
+
+function convertCredits() {
+  let score = sessionStorage.getItem('selectedItemPrice');
+
+  if (score < 10) {
+    score = parseInt(score, 10);
+    updateCredits(score);
+  } else {
+    // Zorg dat score een nummer is
+    score = parseInt(score, 10);
+    let lastDigit = score % 10; // Haal de laatste cijfer door de rest te nemen
+    console.log("Last digit:", lastDigit);
+    updateCredits(lastDigit);
+
+    // Hier kun je verder werken met lastDigit
+  }
+}

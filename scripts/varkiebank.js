@@ -140,6 +140,39 @@ function checkUsername() {
       });
 }
 }
+function checkCredits() {
+  const user = auth.currentUser;
+  const creditsText = document.getElementById('creditsText');
+
+  if (user) {
+      const uid = user.uid;
+      const userRef = db.collection('users').doc(uid);
+
+      userRef.get().then((doc) => {
+          if (doc.exists) {
+              const userData = doc.data();
+
+              if (userData.credits === undefined) {
+                  // Credits aanmaken als het niet bestaat
+                  userRef.set({ credits: 0 }, { merge: true }).then(() => {
+                      console.log("Credits zijn ingesteld op 0.");
+                  });
+              } else {
+                  // Tekst aanpassen als credits al bestaat
+                  creditsText.innerText = `${userData.credits}`;
+              }
+          } else {
+              // Nieuw document aanmaken als het niet bestaat
+              userRef.set({ credits: 0 }).then(() => {
+                console.log("Credits zijn ingesteld op 0.");
+              });
+          }
+      }).catch((error) => {
+          console.error('Fout bij het ophalen van gebruikersgegevens: ', error);
+      });
+  }
+}
+
 
 // Navigatie functies blijven hetzelfde
 function stort() { window.location="ad.html"; }
@@ -156,5 +189,10 @@ function geldsturen() { window.location.href="stuurvarkies.html"; }
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
       checkUsername(); // This will run the function after 2 seconds
+  }, 500); // 2000ms = 2 seconds
+});
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+      checkCredits(); // This will run the function after 2 seconds
   }, 500); // 2000ms = 2 seconds
 });
