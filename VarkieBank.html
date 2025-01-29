@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,31 @@
   <link rel="stylesheet" href="styles/varkiebank.css">
   <link rel="stylesheet" href="styles/popup.css">
   <script src="https://cdn.usefathom.com/script.js" data-site="prj_dC2jNkTdTSOb67Aou1kh2NRJtaoa" defer></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HHW3L2WDM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8HHW3L2WDM');
+  </script>
 </head>
+
 <body>
   <div id="popupOverlay" class="overlay">
     <div class="popup-box">
       <h2>Voer Je Gewenste Naam In</h2>
       <p>Het Word Aanbevolen Om Aleen Je Voornaam Te Doen</p>
-      <input type="text" id="username" placeholder="Naam"/>
+      <input type="text" id="username" placeholder="Naam" />
       <button id="submitUsername">Submit</button>
     </div>
   </div>
   <div style="padding-bottom: 60px;">
     <header class="sticky-header">
       <a class="flex" href="VarkieBank.html">
-        <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;" draggable="false">
+        <img src="assets/Piggy_Tokens.webp" width="70px" height="70px" style="padding-right: 10px; padding-top: 4px;"
+          draggable="false">
         <h1 class="title" style="color: white;">VarkieBank</h1>
       </a>
       <nav>
@@ -53,63 +65,88 @@
     </header>
   </div>
 
-  <div style="padding-left: 20px; font-size: 20px;"><h1 id="usernameText">Hallo Varkentje</h1></div>
+  <div style="padding-left: 20px; font-size: 20px;">
+    <h1 id="usernameText">Hallo Varkentje</h1>
+  </div>
   <!-- De rest van de inhoud van de pagina blijft hetzelfde -->
   <div class="flexing">
     <div class="saldo">
-        <div class="saldotext">
-            <h1>Je Saldo:</h1>
+      <div class="saldotext">
+        <h1>Je Saldo:</h1>
+      </div>
+      <div class="money">
+        <img src="assets/Piggy_Tokens.webp" width="80px" height="80px" style="padding-right: 10px;" draggable="false">
+        <input style="padding-left: 10px;" id="displayMoney" readonly>
+      </div>
+      <div class="news" style="display: none;">
+        <p>Nieuws</p>
+        <div class="newsbar"></div>
+        <div id="article">
+          <p>Test Cool Article</p>
         </div>
-        <div class="money">
-            <img src="assets/Piggy_Tokens.webp" width="80px" height="80px" style="padding-right: 10px;" draggable="false">
-            <input style="padding-left: 10px;" id="displayMoney" readonly>
+        <div class="newsbar"></div>
+        <div id="article">
+          <p>Test Cool Article</p>
         </div>
-        <div class="news" style="display: none;">
-          <p>Nieuws</p>
-          <div class="newsbar"></div>
-          <div id="article">
-            <p>Test Cool Article</p>
+      </div>
+    </div>
+    <div style="padding-top: 10px;">
+      <div class="nieuwe">
+        <div style="padding-left: 10px;">
+          <div>
+            <button onclick="verdien()">
+              <div class="icon1"><img class="img1" src="/assets/verdienen.png" width="50px"></div>
+              <div class="div">Geld Verdienen</div>
+            </button>
           </div>
-          <div class="newsbar"></div>
-          <div id="article">
-            <p>Test Cool Article</p>
+          <div style="padding-top: 5px;">
+            <button onclick="winkel()">
+              <div class="icon1"><img src="assets/buy-it.png" width="42px"></div>
+              <div class="div">Winkelen</div>
+            </button>
+          </div>
+          <div style="padding-top: 5px;">
+            <button onclick="aankopen()">
+              <div class="icon1"><img src="assets/products.png" width="42px"></div>
+              <div class="div">Aankopen</div>
+            </button>
+          </div>
+          <div style="padding-top: 5px;">
+            <button onclick="werken()">
+              <div class="icon1"><img src="assets/work.png" width="50px"></div>
+              <div class="div">Werken</div>
+            </button>
+          </div>
+          <div style="padding-top: 5px;">
+            <button onclick="school()">
+              <div class="icon1"><img src="assets/school.png" width="45px"></div>
+              <div class="div">KoeienLeren</div>
+            </button>
+          </div>
+          <div style="padding-top: 5px;">
+            <button onclick="cadeukaart()">
+              <div class="icon1"><img src="assets/cadeukaart.png" width="45px"></div>
+              <div class="div">CadeuKaart Inleveren</div>
+            </button>
+          </div>
+          <div style="padding-top: 5px;">
+            <button onclick="geldsturen()">
+              <div class="icon1"><img src="assets/4755521.png" width="45px"></div>
+              <div class="div">Varkies Sturen</div>
+            </button>
           </div>
         </div>
       </div>
-      <div style="padding-top: 10px;">
-        <div class="nieuwe">
-            <div style="padding-left: 10px;">
-                <div>
-                    <button onclick="verdien()"><div class="icon1"><img class="img1" src="/assets/verdienen.png" width="50px"></div><div class="div">Geld Verdienen</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="winkel()"><div class="icon1"><img src="assets/buy-it.png" width="42px"></div><div class="div">Winkelen</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="aankopen()"><div class="icon1"><img src="assets/products.png" width="42px"></div><div class="div">Aankopen</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="werken()"><div class="icon1"><img src="assets/work.png" width="50px"></div><div class="div">Werken</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="school()"><div class="icon1"><img src="assets/school.png" width="45px"></div><div class="div">KoeienLeren</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="cadeukaart()"><div class="icon1"><img src="assets/cadeukaart.png" width="45px"></div><div class="div">CadeuKaart Inleveren</div></button>
-                </div>
-                <div style="padding-top: 5px;">
-                  <button onclick="geldsturen()"><div class="icon1"><img src="assets/4755521.png" width="45px"></div><div class="div">Varkies Sturen</div></button>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="trans">
       <h1>Transactiegeschiedenis</h1>
       <ul style="color: #000;" id="transactions"></ul>
-      <button onclick="clearTransactions()" style="background-color: red; font-size: 15px; color: white; border-radius: 5px; padding: 5px 10px;">Verwijder Transacties</button>
+      <button onclick="clearTransactions()"
+        style="background-color: red; font-size: 15px; color: white; border-radius: 5px; padding: 5px 10px;">Verwijder
+        Transacties</button>
     </div>
   </div>
-</div>
+  </div>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
@@ -117,4 +154,5 @@
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
   <script src="scripts/varkiebank.js"></script>
 </body>
+
 </html>
