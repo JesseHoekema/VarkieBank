@@ -205,3 +205,24 @@ margin-bottom: 0px;
   margin-top: 14px;
   margin-right: 5px;
 }
+.VarkieCredits::after {
+  content: "Klik Om De Shop Te Openen";
+  position: absolute;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  bottom: -20px; /* Plaatst de tooltip onder de div */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  transition-delay: 1s; /* Vertraagt het tonen van de tooltip */
+  pointer-events: none;
+}
+
+.VarkieCredits:hover::after {
+  opacity: 1;
+}

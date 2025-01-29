@@ -183,7 +183,7 @@ function werken() { window.location.href="werken.html"; }
 function school() { window.location.href="koeienleren.html"; }
 function cadeukaart() { window.location.href="cadeukaart.html"; }
 function geldsturen() { window.location.href="stuurvarkies.html"; }
-
+function VarkieCreditsRedirect() { window.location.href="VarkieCredits.html"; }
 
 
 document.addEventListener('DOMContentLoaded', function() {
