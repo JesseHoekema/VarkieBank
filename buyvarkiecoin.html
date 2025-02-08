@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koop VarkieCoin</title>
+    <link rel="shortcut icon" href="assets/3dprinted.png" type="image/x-icon">
+</head>
+<body>
+    <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSeVoIaMX_8d_uqCCEbe6eHIfPQAE3UYHYq65O-rwIdtvDNHrw/viewform?embedded=true" width="100%" height="1200px" frameborder="0" marginheight="0" marginwidth="0">Laden…</iframe>
+
+    <script>
+        let firstLoad = true;
+        
+        document.getElementById("google-form").addEventListener("load", function() {
+            if (firstLoad) {
+                firstLoad = false; // Eerste load negeren
+            } else {
+                // Get existing paid products from localStorage or initialize an empty array
+                sessionStorage.setItem('selectedItemName', "VarkieCoin");
+                sessionStorage.setItem('selectedItemPrice', 100000);
+      
+                // Redirect to purchase page
+                window.location.href = 'aankoop.html';
+            }
+        });
+    </script>
+
+</body>
+</html>

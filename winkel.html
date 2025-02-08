@@ -155,6 +155,12 @@
     <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false">1000</h3>
     <button onclick="buyItem('Floppa Coin', 1000)">Koop</button>
   </div>
+  <div class="item">
+    <img src="assets/3dprinted.png" width="100px" draggable="false">
+    <h3>3D-Geprinte VarkieCoin (Komt echt aan)</h3>
+    <h3><img src="assets/Piggy_Tokens.webp" width="20px" draggable="false">100000</h3>
+    <button onclick="varkiecoin()">Koop</button>
+  </div>
   <br>
   <div class="item">
     <img src="assets/products/tesla/teslamodel3.png" width="200px" draggable="false">
@@ -189,6 +195,9 @@
       
       // Redirect to purchase page
       window.location.href = 'aankoop.html';
+    }
+    function varkiecoin() {
+      window.location.href = "buyvarkiecoin.html"
     }
   </script>
 </body>
